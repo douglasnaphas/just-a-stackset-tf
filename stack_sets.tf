@@ -2,7 +2,7 @@ locals {
   stacksets = {
     "some-outputs" = {
       description  = "Some outputs."
-      capabilities = ["CAPABILITY_IAM"]
+      capabilities = []
     }
   }
 }
@@ -19,4 +19,8 @@ resource "aws_cloudformation_stack_set" "stackset_map" {
       administration_role_arn
     ]
   }
+  depends_on = [
+    aws_cloudformation_stack.AWSCloudFormationStackSetAdministrationRole,
+    aws_cloudformation_stack.AWSCloudFormationStackSetExecutionRole
+  ]
 }
