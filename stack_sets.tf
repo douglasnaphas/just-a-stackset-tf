@@ -2,7 +2,7 @@ locals {
   stacksets = {
     "some-outputs" = {
       description  = "Some outputs."
-      capabilities = []
+      capabilities = ["CAPABILITY_IAM"]
     }
   }
 }
