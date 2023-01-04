@@ -3,6 +3,12 @@
 
   "Description": "Some outputs.",
 
+  "Resources": {
+    "Queue": {
+      "Type": "AWS::SQS::Queue"
+    }
+  },
+
   "Parameters": {
     "Param1": {
       "Description": "Parameter 1",
