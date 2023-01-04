@@ -6,13 +6,4 @@ terraform {
     }
   }
   required_version = ">= 1.0.0"
-
-  # backend "remote" {
-  #   hostname     = "app.terraform.io"
-  #   organization = var.tf_cloud_organization
-
-  #   workspaces {
-  #     name = var.workspace_name
-  #   }
-  # }
 }
