@@ -8,12 +8,13 @@ locals {
 }
 
 resource "aws_cloudformation_stack_set" "stackset_map" {
-  for_each         = local.stacksets
-  name             = each.key
-  description      = each.value.description
-  permission_model = "SELF_MANAGED"
-  template_body    = file(join("", ["cfn_templates/", replace(each.key, "-", "_"), ".json"]))
-  capabilities     = each.value.capabilities
+  for_each                = local.stacksets
+  name                    = each.key
+  description             = each.value.description
+  permission_model        = "SELF_MANAGED"
+  template_body           = file(join("", ["cfn_templates/", replace(each.key, "-", "_"), ".json"]))
+  capabilities            = each.value.capabilities
+  administration_role_arn = join("", ["arn:aws:iam::", data.aws_caller_identity.current.account_id, ":role/AWSCloudFormationStackSetAdministrationRole"])
   lifecycle {
     ignore_changes = [
       administration_role_arn
